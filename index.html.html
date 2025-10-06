@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Delta Executor</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;scroll-behavior:smooth;font-family:"Segoe UI",Roboto,Arial,sans-serif;}
+  body{background:linear-gradient(135deg,#f0f8ff,#d0e7ff);color:#1a1a1a;position:relative;overflow-x:hidden;}
+  section{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px;}
+  .card{width:900px;max-width:92vw;background:rgba(255,255,255,0.85);border-radius:16px;padding:36px;
+    box-shadow:0 12px 28px rgba(0,0,50,0.12),inset 0 1px 0 rgba(255,255,255,0.3);backdrop-filter:blur(8px);}
+  h1{font-size:32px;color:#0d47a1;margin-bottom:12px;}
+  h2{font-size:28px;color:#0d47a1;margin-bottom:16px;}
+  p{color:#1565c0;opacity:0.85;font-size:14px;line-height:1.6;}
+  .controls{margin-top:28px;display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{appearance:none;border:0;padding:14px 20px;font-size:16px;border-radius:12px;cursor:pointer;color:#fff;font-weight:700;
+    letter-spacing:.6px;transition:transform .12s ease,box-shadow .2s ease;min-width:180px;text-decoration:none;
+    display:inline-flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+  .btn:active{transform:translateY(1px)}
+  .btn--download{background:linear-gradient(90deg,#4fc3f7,#0288d1);box-shadow:0 6px 18px rgba(0,123,255,0.25);}
+  .btn--install{background:linear-gradient(90deg,#81d4fa,#039be5);box-shadow:0 6px 18px rgba(3,155,229,0.25);}
+  .btn::before{content:'';position:absolute;left:-10%;top:-10%;width:120%;height:120%;border-radius:12px;
+    pointer-events:none;box-shadow:0 0 30px rgba(3,155,229,0.1);mix-blend-mode:screen;opacity:.7;transform:skewX(-6deg);}
+  .meta{margin-top:12px;display:flex;gap:12px;align-items:center;color:#1565c0;font-size:13px;}
+  footer{margin-top:14px;color:#0d47a1;font-size:12px;opacity:.9;text-align:right;}
+  .title-caret{display:inline-block;width:8px;height:20px;background:#0288d1;margin-left:8px;opacity:0.85;
+    animation:blink 1s steps(2) infinite;vertical-align:middle;}
+  @keyframes blink{50%{opacity:0}}
+  .hamburger{position:fixed;top:18px;right:24px;width:32px;height:24px;cursor:pointer;z-index:1000;}
+  .hamburger div{width:100%;height:4px;background-color:#0d47a1;margin:5px 0;border-radius:2px;transition:all 0.3s ease;}
+  .hamburger.active div:nth-child(1){transform:rotate(45deg) translate(6px,6px);}
+  .hamburger.active div:nth-child(2){opacity:0;}
+  .hamburger.active div:nth-child(3){transform:rotate(-45deg) translate(6px,-6px);}
+  .dropdown{position:fixed;top:58px;right:24px;background:rgba(255,255,255,0.9);backdrop-filter:blur(6px);
+    border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.1);overflow:hidden;opacity:0;visibility:hidden;
+    transform:translateY(-10px);transition:all 0.3s ease;z-index:999;}
+  .dropdown.active{opacity:1;visibility:visible;transform:translateY(0);}
+  .dropdown a{display:block;padding:12px 20px;text-decoration:none;color:#0d47a1;font-weight:600;font-size:15px;
+    transition:background 0.2s ease;}
+  .dropdown a:hover{background:rgba(13,71,161,0.1);}
+  .section{opacity:0;visibility:hidden;position:absolute;top:0;left:0;width:100%;transition:opacity 0.4s ease,visibility 0.4s ease;}
+  .section.active{opacity:1;visibility:visible;position:relative;}
+  .links{display:flex;flex-direction:column;gap:16px;margin-top:16px;}
+  .links a{display:inline-block;background:linear-gradient(90deg,#4fc3f7,#0288d1);color:#fff;text-decoration:none;
+    padding:14px 24px;border-radius:12px;font-weight:bold;transition:transform 0.2s ease,box-shadow 0.2s ease;
+    text-align:center;}
+  .links a:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,50,0.15);}
+</style>
+</head>
+<body>
+<div class="hamburger" id="hamburger"><div></div><div></div><div></div></div>
+<div class="dropdown" id="dropdown">
+  <a href="#" data-target="downloads">Downloads</a>
+  <a href="#" data-target="social">Social Media Accounts</a>
+</div>
+<section id="downloads" class="section active">
+  <div class="card">
+    <h1>Delta Executor <span class="title-caret"></span></h1>
+    <p>Official Delta Executor — modern installer interface</p>
+    <div class="controls">
+      <a class="btn btn--download" href="https://cdn.gloopup.net/file/Delta-2.692.841.ipa" target="_blank" rel="noopener noreferrer" download>IPA Download</a>
+      <a class="btn btn--install" href="https://deltaios-executor.com" target="_blank" rel="noopener noreferrer">Direct Install</a>
+    </div>
+    <div class="meta">
+      <div>Version: <strong>2.692.841</strong></div><div>|</div>
+      <div>SHA-256: <small>—</small></div>
+    </div>
+    <footer>Secure channel: <span>ESTABLISHED</span></footer>
+  </div>
+</section>
+<section id="social" class="section">
+  <div class="card">
+    <h2>Social Media Accounts</h2>
+    <p>Follow Delta Executor on our official platforms:</p>
+    <div class="links">
+      <a href="https://www.tiktok.com/@deltaexecutor4980?_t=ZN-90KI22QAADu&_r=1" target="_blank">TikTok Account</a>
+      <a href="https://youtube.com/@deltaexecutortech?si=FdpCJ23R290lMMWS" target="_blank">YouTube Account</a>
+    </div>
+  </div>
+</section>
+<script>
+const hamburger=document.getElementById('hamburger');
+const dropdown=document.getElementById('dropdown');
+hamburger.addEventListener('click',()=>{hamburger.classList.toggle('active');dropdown.classList.toggle('active');});
+document.querySelectorAll('.dropdown a').forEach(link=>{
+  link.addEventListener('click',e=>{
+    e.preventDefault();
+    const target=e.currentTarget.getAttribute('data-target');
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+    document.getElementById(target).classList.add('active');
+    hamburger.classList.remove('active');
+    dropdown.classList.remove('active');
+  });
+});
+</script>
+</body>
+</html>
